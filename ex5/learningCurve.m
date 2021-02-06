@@ -53,10 +53,18 @@ error_val   = zeros(m, 1);
 
 % ---------------------- Sample Solution ----------------------
 
+for i = 1:m
+    XiTrain = X(1:i, :);
+    yiTrain = y(1:i);
 
+    theta = trainLinearReg(XiTrain, yiTrain, lambda);
 
+    [JTrain grad] = linearRegCostFunction(XiTrain, yiTrain, theta, 0);
+    error_train(i) = JTrain;
 
-
+    [JCV grad] = linearRegCostFunction(Xval, yval, theta, 0);
+    error_val(i) = JCV;
+end
 
 
 % -------------------------------------------------------------

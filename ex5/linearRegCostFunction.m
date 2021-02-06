@@ -19,16 +19,10 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
-
-
-
-
-
-
-
-
-
-
+thetaWoBias = theta(2:end);
+z = X * theta;
+J = sum((z - y) .^ 2) / (2 * m) + lambda / (2 * m) * sum(thetaWoBias .^2)
+grad = X' * (z - y) / m + lambda / m * [0; thetaWoBias];
 
 % =========================================================================
 
